@@ -43,7 +43,8 @@ namespace IActionResultExample.Controllers
 
             }
             //return new VirtualFileResult("/sample.pdf", "application/pdf");
-            return File("/ID.pdf", "application/pdf");
+            //return new RedirectToActionResult("Books", "Store", new object());//302 found
+            return new RedirectToActionResult("Books", "Store", new object(), true); //301 move permantly
         }
     }
 }
