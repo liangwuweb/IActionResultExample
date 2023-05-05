@@ -44,7 +44,11 @@ namespace IActionResultExample.Controllers
             }
             //return new VirtualFileResult("/sample.pdf", "application/pdf");
             //return new RedirectToActionResult("Books", "Store", new object());//302 found
-            return new RedirectToActionResult("Books", "Store", new object(), true); //301 move permantly
+            //return RedirectToAction("Books", "Store", new { id = bookId});
+            //return new RedirectToActionResult("Books", "Store", new object(), true); //301 move permantly
+            //return RedirectToActionPermanent("Books", "Store", new { id = bookId });
+            //return LocalRedirectPermanent($"store/book/{bookId}"); // 301
+            return Redirect($"store/books/{bookId}");
         }
     }
 }
