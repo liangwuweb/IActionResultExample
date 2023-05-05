@@ -14,12 +14,12 @@ namespace IActionResultExample.Controllers
         //}
 
         [Route("bookstore/{bookid?}/{isloggedin?}")]
-        public IActionResult Index([FromRoute]int? bookid, [FromRoute]bool? isloggedin, Book book)
+        public IActionResult Index(int? bookid, bool? isloggedin, Book book)
         {
             //Book id should be appield
             if (!bookid.HasValue)
             {
-         
+
                 return BadRequest("no book id");
             }
 
@@ -36,7 +36,7 @@ namespace IActionResultExample.Controllers
                 return Unauthorized("User must be authenticated");
 
             }
-            return Content($"Book id: {bookid}, Book info: {book.ToString}", "text/plain");
+            return Content($"Book id: {bookid}, Book info: {book}", "text/plain");
         }
     }
 }
