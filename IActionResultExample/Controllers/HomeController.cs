@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using IActionResultExample.Models;
 
 namespace IActionResultExample.Controllers
 {
@@ -13,7 +14,7 @@ namespace IActionResultExample.Controllers
         //}
 
         [Route("bookstore/{bookid?}/{isloggedin?}")]
-        public IActionResult Index(int? bookid, bool? isloggedin)
+        public IActionResult Index([FromRoute]int? bookid, [FromRoute]bool? isloggedin, Book book)
         {
             //Book id should be appield
             if (!bookid.HasValue)
@@ -35,7 +36,7 @@ namespace IActionResultExample.Controllers
                 return Unauthorized("User must be authenticated");
 
             }
-            return Content($"Book id: {bookid}", "text/plain");
+            return Content($"Book id: {bookid}, Book info: {book.ToString}", "text/plain");
         }
     }
 }
